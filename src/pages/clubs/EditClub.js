@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Menu from "../../components/Menu";
+
 const EditClub = () => {
     const { club } = useParams()
     const navigate = useNavigate();

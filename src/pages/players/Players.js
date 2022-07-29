@@ -3,11 +3,13 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Menu from "../../components/Menu";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const Players = () => {
     const [players, setPlayers] = useState([]);
     useEffect(() => {
         displayPlayers();
+        
     }, []); // Sans les crochets ça tourne en boucle
     
     const displayPlayers = async () => {
@@ -40,15 +42,18 @@ const Players = () => {
                                 <td>{player.lastName}</td> 
                                 <td>{player.height}</td> 
                                 <td>{player.position}</td>
-                                <td>{player.club_id}</td> 
-                                <td>{player.photoPlayer}</td>
+                                <td>{player.nameClub}</td> 
+                            
                                 <td>
                                     <img
-                                        src={`http://localhost:8000/storage/uploads/${player.logoPlayer}`}
+                                        src={`http://localhost:8000/storage/uploads/${player.photoPlayer}`}
                                         width="75px"
                                     />
                                 </td>
                                 <td>
+                                <Link to={`/players/edit/${player.id}`} className='btn btn-success me-2'>
+Edit
+</Link>
                                     <Button
                                         variant="danger"
                                         onClick={() => {
